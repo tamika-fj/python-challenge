@@ -2,8 +2,7 @@ import os
 import csv
 
 #path to collect data from the pybank folder
-election_data_csv = os.path.join('Resources', 'election_data.csv')
-
+election_data_csv = os.path.join('PyPoll', 'Resources', 'election_data.csv')
 
 # A list to capture the names of candidates
 candidates = []
@@ -31,14 +30,15 @@ with open(election_data_csv, newline = "") as csvfile:
     csvreader = csv.reader(csvfile, delimiter = ",")
     csv_header = next(csvreader)
 
+    #select values to loop through 
     for row in csvreader:
-        # Add to our vote-counter
+        # Add to our vote-counter, 1 vote for each row after the header
         total_votes += 1
 
         '''
-        If the candidate is not on our list, add his/her name to our list, along with
+        If the candidate is not on the list, add his/her name to the list, along with
         a vote in his/her name.
-        If he/she is already on our list, we will simply add a vote in his/her
+        If he/she is already in the list, add a vote in his/her
         name
         '''
         if row[2] not in candidates:
@@ -81,7 +81,7 @@ print(f"Winner: {winning_candidate}")
 result_divide()
 
 #Set variable for output file
-output_file = os.path.join('analysis', 'pypoll_calculations.csv')
+output_file = os.path.join('Pypoll', 'analysis', 'pypoll_calculations.csv')
 
 #open the output file
 with open(output_file, "w") as datafile:

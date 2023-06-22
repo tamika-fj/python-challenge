@@ -2,7 +2,7 @@ import csv
 import os
 
 #path to collect data from the pybank folder
-budget_data = os.path.join('Resources', 'budget_data.csv')
+budget_data = os.path.join('PyBank','Resources', 'budget_data.csv')
 
 #display title on screen
 def display_title():
@@ -43,7 +43,7 @@ with open(budget_data, newline = "") as csvfile:
     print("Total Months:", len(date),'\n\n')
     print("Total: $", sum(budget),'\n\n')
 
-
+    #set values to be looped through
     for i in range(1,len(budget)):
         #compare current row with previous row in the profit/losses column
         budget_change.append(budget[i] - budget[i-1])
@@ -68,7 +68,7 @@ with open(budget_data, newline = "") as csvfile:
 
 
 #Set variable for output file
-output_file = os.path.join('analysis', 'pybank_calculations.csv')
+output_file = os.path.join('PyBank', 'analysis', 'pybank_calculations.csv')
 
 #open the output file
 with open(output_file, "w") as datafile:
